@@ -20,7 +20,7 @@ import System.IO
 -- ---------------------------------------------------------------------
  
 profundidadDeBusqueda :: Int
-profundidadDeBusqueda = 10
+profundidadDeBusqueda = 6
  
 -- ---------------------------------------------------------------------
 -- Ejercicio 2. Las posiciones del tablero se numeran como se indica a
