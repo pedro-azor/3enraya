@@ -20,7 +20,7 @@ import System.IO
 -- ---------------------------------------------------------------------
  
 profundidadDeBusqueda :: Int
-profundidadDeBusqueda = 6
+profundidadDeBusqueda = 1 
  
 -- ---------------------------------------------------------------------
 -- Ejercicio 2. Las posiciones del tablero se numeran como se indica a
@@ -423,10 +423,10 @@ muestraLinea t =
  
 muestraTablero :: Tablero -> String
 muestraTablero t = 
-    muestraLinea t [1..4] ++ "\n-+-+-\n" ++
-    muestraLinea t [5..8] ++ "\n-+-+-\n" ++
-    muestraLinea t [9..12] ++ "\n-+-+-\n" ++
-    muestraLinea t [13..16]
+    muestraLinea t [01 02 03 04] ++ "\n-+-+-+-+-\n" ++
+    muestraLinea t [05 06 07 08] ++ "\n-+-+-+-+-\n" ++
+    muestraLinea t [09 10 11 12] ++ "\n-+-+-+-+-\n" ++
+    muestraLinea t [13 14 15 16]
  
 -- ---------------------------------------------------------------------
 -- § Control del juego                                                --
