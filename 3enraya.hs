@@ -136,8 +136,8 @@ subconjunto s1 s2 = all (`elem` s2) s1
 tieneLinea :: Posiciones -> Bool
 tieneLinea ps = 
     subconjunto [1,2,3,4] ps ||subconjunto [5,6,7,8] ps ||subconjunto [9,10,11,12] ps || subconjunto [13,14,15,16] ps 
-    ||subconjunto [1,5,9,13] ps ||subconjunto [2,6,10,14] ps || subconjunto [3,7,11,15] ps ||subconjunto [4,8,12,16] ps || 
-    subconjunto [1,6,11,16] ps || subconjunto [4,7,10,13] ps ||  subconjunto []
+    ||subconjunto [1,5,9,13] ps ||subconjunto [2,6,10,14] ps || subconjunto [3,7,11,15] ps ||subconjunto [4,8,12,16] ps 
+    || subconjunto [1,6,11,16] ps || subconjunto [4,7,10,13] ps 
  
 -- ---------------------------------------------------------------------
 -- Ejercicio 11. Definir la función
