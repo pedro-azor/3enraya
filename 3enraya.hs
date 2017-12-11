@@ -20,19 +20,21 @@ import System.IO
 -- ---------------------------------------------------------------------
  
 profundidadDeBusqueda :: Int
-profundidadDeBusqueda = 6
+profundidadDeBusqueda = 10
  
 -- ---------------------------------------------------------------------
 -- Ejercicio 2. Las posiciones del tablero se numeran como se indica a
 -- continuación: 
---    1|2|3
---    -+-+-
---    4|5|6
---    -+-+-
---    7|8|9
+--    01|02|03|04
+--    -+-+-+-+-+-
+--    05|06|07|08
+--    -+-+-+-+-+-
+--    09|10|11|12
+--    -+-+-+-+-+-
+--    13|14|15|16
 -- 
 -- Definir el tipo de dato Posicion para representar una posición del
--- tablero. Cada posición es un entero del 1 a 9.
+-- tablero. Cada posición es un entero del 1 a 12.
 -- ---------------------------------------------------------------------
  
 type Posicion = Int
@@ -108,7 +110,7 @@ pone (Tab xs os) p | turnoDeX (Tab xs os) = Tab (p:xs) os
 -- ---------------------------------------------------------------------
  
 completo :: Tablero -> Bool
-completo (Tab xs os) = length xs + length os == 9
+completo (Tab xs os) = length xs + length os == 16
  
 -- ---------------------------------------------------------------------
 -- Ejercicio 9. Definir la función
@@ -133,9 +135,9 @@ subconjunto s1 s2 = all (`elem` s2) s1
  
 tieneLinea :: Posiciones -> Bool
 tieneLinea ps = 
-    subconjunto [1,2,3] ps ||subconjunto [4,5,6] ps ||subconjunto [7,8,9] ps ||
-    subconjunto [1,4,7] ps ||subconjunto [2,5,8] ps ||subconjunto [3,6,9] ps ||
-    subconjunto [1,5,9] ps ||subconjunto [3,5,7] ps
+    subconjunto [1,2,3,4] ps ||subconjunto [5,6,7,8] ps ||subconjunto [9,10,11,12] ps || subconjunto [13,14,15,16] ps 
+    ||subconjunto [1,5,9,13] ps ||subconjunto [2,6,10,14] ps || subconjunto [3,7,11,15] ps ||subconjunto [4,8,12,16] ps || 
+    subconjunto [1,6,11,16] ps || subconjunto [4,7,10,13] ps ||  subconjunto []
  
 -- ---------------------------------------------------------------------
 -- Ejercicio 11. Definir la función
@@ -207,7 +209,7 @@ instance Show a => Show (Arbol a) where
 -- ---------------------------------------------------------------------
  
 posicionesLibres :: Tablero -> Posiciones
-posicionesLibres (Tab xs os) = [1..9] \\ (xs++os)
+posicionesLibres (Tab xs os) = [1..16] \\ (xs++os)
  
 -- ---------------------------------------------------------------------
 -- Ejercicio 15. Definir la función
@@ -421,9 +423,10 @@ muestraLinea t =
  
 muestraTablero :: Tablero -> String
 muestraTablero t = 
-    muestraLinea t [1..3] ++ "\n-+-+-\n" ++
-    muestraLinea t [4..6] ++ "\n-+-+-\n" ++
-    muestraLinea t [7..9]
+    muestraLinea t [1..4] ++ "\n-+-+-\n" ++
+    muestraLinea t [5..8] ++ "\n-+-+-\n" ++
+    muestraLinea t [9..12] ++ "\n-+-+-\n" ++
+    muestraLinea t [13..16]
  
 -- ---------------------------------------------------------------------
 -- § Control del juego                                                --
@@ -448,7 +451,7 @@ muestraTablero t =
 main :: IO ()
 main = do
   hSetBuffering stdout NoBuffering           -- 1
-  putStrLn "Tres en raya"                    -- 2
+  putStrLn "Cuatro en raya"                    -- 2
   putStrLn (muestraTablero tableroInicial)   -- 3
   putStr "Comienza el juego? (s/n) "         -- 4
   l <- getLine                               -- 5
@@ -474,7 +477,7 @@ main = do
 --                   con tablero t'. 
 -- 
 -- Nota: No se comprueba la corrección de la posición elegida (es decir, 
--- si es un número entre 1 y 9 y no hay ficha en esa posición).
+-- si es un número entre 1 y 12 y no hay ficha en esa posición).
 -- ---------------------------------------------------------------------
  
 humano :: Tablero -> IO ()
